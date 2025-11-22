@@ -8,5 +8,6 @@ for (let index = 0; index < size * size; index++) {
     square.style.width = `calc(100% / ${size} - ${squareBorderSize*2}px)`
     square.style.height = `calc(100% / ${size} - ${squareBorderSize*2}px)`
     square.style.border = `${squareBorderSize}px solid grey`
+    square.style.background = "white"
     mainContainer.appendChild(square)
 }0
