@@ -25,12 +25,15 @@ function createGridElement(gridSize) {
 //Eventlistener to display the grid size to the user
 const sliderInput = document.querySelector(".slider")
 const sliderOutput = document.querySelectorAll(".gridSizeOutput")
-//When a change occurs change the value as well
+//When the slider is released the grid will update
+sliderInput.addEventListener("change", (event) => {
+    createGridElement(event.target.value)
+})
+//As soon as the value of the slider changes, the text of the grid changes as well
 sliderInput.addEventListener("input", (event) => {
     sliderOutput.forEach(element => {
         element.textContent = event.target.value
     });
-    createGridElement(event.target.value)
 })
 
 
