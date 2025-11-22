@@ -80,6 +80,12 @@ button {
     margin-top: calc((var(--track-heigt) / 2) - (var(--thumb-height) / 2))
 }
 
+.gridSize {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
 
 .container {
     display: flex;
