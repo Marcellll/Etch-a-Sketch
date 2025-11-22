@@ -1,7 +1,36 @@
+body {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    margin: 0;
+}
+
+.header,
+.footer {
+    display: flex;
+    height: 75px;
+    background: grey;
+}
+
+.main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex: 1;
+}
+
+
 .container {
     display: flex;
     flex-wrap: wrap;
-    width: 500px;
-    height: 500px;
+    width: 650px;
+    height: 650px;
     border: 2px solid black;
+}
+
+.controls {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin: 8px;
 }
