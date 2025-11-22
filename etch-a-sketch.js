@@ -1,5 +1,6 @@
 const mainContainer = document.querySelector(".container")
-const squareBorderSize = 1; 
+const squareBorderSize = 1;
+const colorPicker = document.querySelector(".colorPicker")
 
 function createGridElement(gridSize) {
     //Cleaning up the grid for a new one
@@ -14,6 +15,9 @@ function createGridElement(gridSize) {
         square.style.height = `calc(100% / ${gridSize} - ${squareBorderSize*2}px)`
         square.style.border = `${squareBorderSize}px solid grey`
         square.style.background = "white"
+        square.addEventListener("mouseover", (event) =>{
+            event.target.style.background = colorPicker.value
+        })
         mainContainer.appendChild(square)
     }
 }
