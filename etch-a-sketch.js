@@ -1,6 +1,11 @@
 const mainContainer = document.querySelector(".container")
 const squareBorderSize = 1;
-const colorPicker = document.querySelector(".colorPicker")
+const colorPickerRGB = document.querySelector(".colorPicker")
+const colorButtonEnum = {
+    customColor : "customColorButton",
+    greyScale: "greyScaleButton",
+    rainbow: "rainbowButton"
+}
 
 function createGridElement(gridSize) {
     //Cleaning up the grid for a new one
@@ -16,13 +21,37 @@ function createGridElement(gridSize) {
         square.style.border = `${squareBorderSize}px solid grey`
         square.style.background = "white"
         square.addEventListener("mouseover", (event) =>{
-            event.target.style.background = colorPicker.value
+            event.target.style.background = colorPickerRGB.value
         })
         mainContainer.appendChild(square)
     }
 }
 
-//Eventlistener to display the grid size to the user
+/*
+Handles which button is currently active and changes the status of the 
+currentColorButton
+*/
+function focusButton(button) {
+    controlButtons.forEach(element => {
+        element.classList.remove("btnOn")
+    });
+    button.classList.toggle("btnOn")
+    switch(button.id) {
+        case colorButtonEnum.customColor:
+            currentColorButton = colorButtonEnum.customColor
+            break;
+        case colorButtonEnum.greyScale:
+            currentColorButton = colorButtonEnum.greyScale
+            break;
+        case colorButtonEnum.rainbow:
+            currentColorButton = colorButtonEnum.rainbow
+            break;
+    }
+}
+
+/*
+Eventlisteners to display the grid size to the user
+*/
 const sliderInput = document.querySelector(".slider")
 const sliderOutput = document.querySelectorAll(".gridSizeOutput")
 //When the slider is released the grid will update
@@ -36,10 +65,25 @@ sliderInput.addEventListener("input", (event) => {
     });
 })
 
+/*
+Eventlisteners for the buttons to know which color we should display on the grid
+*/
+const controlButtons = document.querySelectorAll("button")
+controlButtons.forEach(element => {
+    element.addEventListener("click", (event) => {
+        focusButton(element)
+    })
+})
 
 
-//Initialization
+
+/*
+Initialization
+*/
 sliderOutput.forEach(element => {
     element.textContent = sliderInput.value
 });
 createGridElement(16)
+const customColorButton = document.querySelector("#customColorButton")
+let currentColorButton = colorButtonEnum.customColor
+focusButton(customColorButton)

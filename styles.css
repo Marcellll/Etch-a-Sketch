@@ -116,3 +116,8 @@ button {
     gap: 16px;
     margin: 8px;
 }
+
+.btnOn {
+    background-color: var(--color-secondary);
+    color: var(--color-text1);
+}
